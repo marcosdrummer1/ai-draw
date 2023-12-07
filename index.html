@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Drawing Generator</title>
+    <style>
+        canvas {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+
+<h1>AI Drawing Generator</h1>
+<p>Type a word, and the AI will create a drawing for you!</p>
+
+<input type="text" id="textInput" placeholder="Type a word">
+<button onclick="generateDrawing()">Generate Drawing</button>
+
+<canvas id="drawingCanvas" width="400" height="400"></canvas>
+<a id="downloadLink" download="drawing.png" style="display: none;">Download Drawing</a>
+
+<script>
+    const canvas = document.getElementById('drawingCanvas');
+    const ctx = canvas.getContext('2d');
+    const downloadLink = document.getElementById('downloadLink');
+
+    function generateDrawing() {
+        const word = document.getElementById('textInput').value;
+
+        // Clear the canvas
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Draw something simple for demonstration
+        ctx.font = '30px Arial';
+        ctx.fillText(word, 50, 50);
+
+        // Show the download link
+        downloadLink.style.display = 'block';
+
+        // Set the link href to the canvas data URL
+        downloadLink.href = canvas.toDataURL();
+    }
+</script>
+
+</body>
+</html>
